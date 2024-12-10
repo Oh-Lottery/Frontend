@@ -4,6 +4,8 @@ import { nextui } from "@nextui-org/react";
 export default {
   content: [
     "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+    "./entities/**/*.{js,jsx,ts,tsx}",
+    "./shared/**/*.{js,jsx,ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -22,5 +24,6 @@ export default {
       },
     },
   },
-  plugins: [nextui()],
+  darkMode: "class",
+  plugins: [nextui({ addCommonColors: true })],
 } satisfies Config;
