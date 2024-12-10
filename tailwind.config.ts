@@ -12,7 +12,18 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          "Pretendard",
           "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+        logo: [
+          "Poppins",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",

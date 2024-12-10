@@ -10,6 +10,7 @@ import type { LinksFunction } from "@remix-run/node";
 import "/app/styles/tailwind.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { cn } from "shared/lib/cn";
+import LNB from "shared/ui/LNB";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -21,6 +22,14 @@ export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.cdnfonts.com/css/poppins",
   },
 ];
 
@@ -34,11 +43,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className={cn("h-full")}>
-        <NextUIProvider className={cn("h-full")}>
-          {children}
-          <ScrollRestoration />
-          <Scripts />
+        <NextUIProvider className={cn("h-full flex")}>
+          <LNB />
+          <main className={cn("flex-1")}>{children}</main>
         </NextUIProvider>
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   );
