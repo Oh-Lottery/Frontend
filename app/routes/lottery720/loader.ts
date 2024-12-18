@@ -17,7 +17,7 @@ export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
 
   if (!round) {
     return redirect(
-      `/${ROUTE_PATH.LOTTERY_720}?round=${lottery720RoundsDate.length}`
+      `/${ROUTE_PATH.LOTTERY_720._path}?round=${lottery720RoundsDate.length}`
     );
   }
 
