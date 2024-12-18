@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import { lottery720Loader } from "./loader";
-import Lottery720Ball from "entities/lottery/ui/Lottery720Ball";
+import Lottery720Ball from "entities/lottery720/ui/Lottery720Ball";
 
 export const loader = lottery720Loader;
 

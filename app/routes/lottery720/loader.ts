@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { getLottery720Detail } from "entities/lottery/api/get";
+import { getLottery720Detail } from "entities/lottery720/api/get";
 import generateDateArray from "shared/lib/generateDateArray";
 
 export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {

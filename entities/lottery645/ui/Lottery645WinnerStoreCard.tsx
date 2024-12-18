@@ -6,9 +6,7 @@ interface Lottery645WinnerStoreCardProps {
   stores: Lottery645WinnerStoreDto[];
 }
 
-const Lottery645WinnerStoreCard = ({
-  stores,
-}: Lottery645WinnerStoreCardProps) => {
+const LotteryWinnerStoreCard = ({ stores }: Lottery645WinnerStoreCardProps) => {
   const list = (() => {
     const storeMap = new Map();
 
@@ -97,4 +95,4 @@ const Lottery645WinnerStoreCard = ({
   );
 };
 
-export default Lottery645WinnerStoreCard;
+export default LotteryWinnerStoreCard;
