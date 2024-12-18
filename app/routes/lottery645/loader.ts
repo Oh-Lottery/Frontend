@@ -1,15 +1,12 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { getLottery645Detail } from "entities/lottery/api/get";
-import generateDateArray from "shared/lib/generateDateArray";
+import { getLottery645Detail } from "entities/lottery645/api/get";
+import { LOTTERY_645_ROUNDS_DATE } from "entities/lottery645/constants/constants";
 
 export const lottery645Loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const round = url.searchParams.get("round");
 
-  const lottery645RoundsDate = generateDateArray({
-    startDate: "2002-12-07",
-    interval: 7,
-  });
+  const lottery645RoundsDate = LOTTERY_645_ROUNDS_DATE;
 
   if (!round) {
     return redirect(`/lottery645?round=${lottery645RoundsDate.length}`);
