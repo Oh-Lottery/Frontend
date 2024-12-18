@@ -1,6 +1,6 @@
 import { Card, CardHeader } from "@nextui-org/card";
 import { Listbox, ListboxSection, ListboxItem, cn } from "@nextui-org/react";
-import { Lottery645WinnerStoreDto } from "../model/get";
+import { Lottery645WinnerStoreDto } from "../../lottery645/model/get";
 
 interface Lottery645WinnerStoreCardProps {
   stores: Lottery645WinnerStoreDto[];
