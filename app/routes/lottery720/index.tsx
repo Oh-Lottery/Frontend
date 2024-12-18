@@ -9,18 +9,24 @@ import {
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import { lottery720Loader } from "./loader";
 import Lottery720Ball from "entities/lottery720/ui/Lottery720Ball";
+import LotteryWinnerStoreCard from "entities/lottery/ui/LotteryWinnerStoreCard";
 
 export const loader = lottery720Loader;
 
 const Lottery720Page = () => {
-  const { drawDate, rankNo, rankClass, lotteryRoundDateArray } =
-    useLoaderData<typeof lottery720Loader>();
+  const {
+    drawDate,
+    rankNo,
+    rankClass,
+    lotteryRoundDateArray,
+    lotteryWinnerStoreResult,
+  } = useLoaderData<typeof lottery720Loader>();
 
   const [params, setParams] = useSearchParams();
 
   return (
-    <div className={cn("h-full flex items-center justify-center")}>
-      <Card className="w-[44rem] p-3 m-auto">
+    <div className={cn("h-full flex gap-10 justify-center")}>
+      <Card className="w-[44rem] p-3 ">
         <CardHeader className="flex items-center justify-between gap-3">
           <h2 className={cn("text-2xl flex items-center gap-4")}>
             <Autocomplete
@@ -78,6 +84,7 @@ const Lottery720Page = () => {
           </div>
         </CardBody>
       </Card>
+      <LotteryWinnerStoreCard stores={lotteryWinnerStoreResult} />
     </div>
   );
 };

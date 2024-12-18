@@ -1,5 +1,8 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { getLottery720Detail } from "entities/lottery720/api/get";
+import {
+  getLottery720Detail,
+  getLottery720WinnerStore,
+} from "entities/lottery720/api/get";
 import generateDateArray from "shared/lib/generateDateArray";
 
 export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
@@ -19,6 +22,10 @@ export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
     round: round ?? lottery720RoundsDate.length.toString(),
   });
 
+  const lotteryWinnerStoreResult = await getLottery720WinnerStore({
+    round: round ?? lottery720RoundsDate.length.toString(),
+  });
+
   return {
     round: result.round,
     drawDate: result.drawDate,
@@ -26,5 +33,6 @@ export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
     rankClass: result.rankClass,
     rankNo: result.rankNo,
     lotteryRoundDateArray: lottery720RoundsDate,
+    lotteryWinnerStoreResult: lotteryWinnerStoreResult,
   };
 };
