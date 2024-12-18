@@ -1,4 +1,3 @@
-import { EnvelopeIcon, LightBulbIcon } from "@heroicons/react/24/outline";
 import {
   cn,
   NavbarItem,
@@ -11,7 +10,13 @@ import { Link } from "@remix-run/react";
 const LNB = () => {
   return (
     <>
-      <Navbar isBordered className={cn("mb-3")}>
+      <Navbar
+        isBordered
+        classNames={{
+          item: ["flex", "data-[active=true]:text-primary"],
+        }}
+        className={cn("mb-3")}
+      >
         <NavbarBrand className={cn("flex-1")}>
           <Link to="/">
             <h1 className={cn("font-logo text-3xl text-center")}>
@@ -20,23 +25,11 @@ const LNB = () => {
           </Link>
         </NavbarBrand>
         <NavbarContent title="당첨 결과" className={cn(" !flex-grow-0")}>
-          <NavbarItem>
-            <Link
-              to={"/lottery645"}
-              className={cn("text-lg flex items-center")}
-            >
-              <LightBulbIcon width={18} />
-              로또 6/45
-            </Link>
+          <NavbarItem isActive>
+            <Link to={"/lottery645"}>로또 6/45</Link>
           </NavbarItem>
           <NavbarItem>
-            <Link
-              to={"/lottery720"}
-              className={cn("text-lg flex items-center")}
-            >
-              <EnvelopeIcon width={18} />
-              연금복권 720+
-            </Link>
+            <Link to={"/lottery720"}>연금복권 720+</Link>
           </NavbarItem>
         </NavbarContent>
       </Navbar>

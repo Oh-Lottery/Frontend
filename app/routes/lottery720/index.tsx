@@ -28,7 +28,7 @@ const Lottery720Page = () => {
     <div className={cn("h-full flex gap-10 justify-center")}>
       <Card className="w-[44rem] p-3 ">
         <CardHeader className="flex items-center justify-between gap-3">
-          <h2 className={cn("text-2xl flex items-center gap-4")}>
+          <h2 className={cn("text-lg flex items-center gap-4")}>
             <Autocomplete
               fullWidth={false}
               className="w-36"
@@ -49,7 +49,7 @@ const Lottery720Page = () => {
                 </AutocompleteItem>
               ))}
             </Autocomplete>
-            연금 복권 당첨 결과
+            당첨 결과
           </h2>
           <Chip color="default">{drawDate}</Chip>
         </CardHeader>

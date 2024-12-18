@@ -57,7 +57,7 @@ const Lottery645ResultCard = ({
   return (
     <Card className="w-[44rem] h-fit p-3">
       <CardHeader className="flex items-center justify-between gap-3">
-        <h2 className={cn("text-xl flex items-center gap-4")}>
+        <h2 className={cn("text-lg flex items-center gap-4")}>
           <Autocomplete
             fullWidth={false}
             className="w-36"
@@ -78,7 +78,7 @@ const Lottery645ResultCard = ({
               </AutocompleteItem>
             ))}
           </Autocomplete>
-          6/45 로또 번호 당첨 결과
+          당첨 결과
         </h2>
         <Chip color="default">{drawDate}</Chip>
       </CardHeader>
