@@ -2,16 +2,22 @@ import { cn } from "@nextui-org/react";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import { lottery645Loader } from "./loader";
 import Lottery645ResultCard from "entities/lottery645/ui/Lottery645ResultCard";
+import Lottery645WinnerStoreCard from "entities/lottery645/ui/Lottery645WinnerStoreCard";
 
 export const loader = lottery645Loader;
 
 const Lottery645Page = () => {
-  const { drawDate, drawnNumber, bonusNumber, lotteryInfo } =
-    useLoaderData<typeof lottery645Loader>();
+  const {
+    drawDate,
+    drawnNumber,
+    bonusNumber,
+    lotteryInfo,
+    lotteryWinnerStore,
+  } = useLoaderData<typeof lottery645Loader>();
   const [params, setParams] = useSearchParams();
 
   return (
-    <div className={cn("h-full flex items-center justify-center")}>
+    <div className={cn("h-full flex gap-10 justify-center")}>
       <Lottery645ResultCard
         drawDate={drawDate}
         lotteryNumbers={{
@@ -24,6 +30,7 @@ const Lottery645Page = () => {
           setParams({ round });
         }}
       />
+      <Lottery645WinnerStoreCard stores={lotteryWinnerStore} />
     </div>
   );
 };

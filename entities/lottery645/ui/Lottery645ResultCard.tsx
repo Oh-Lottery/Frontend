@@ -55,9 +55,9 @@ const Lottery645ResultCard = ({
   onRoundChange,
 }: Lottery645ResultCardProps) => {
   return (
-    <Card className="w-[44rem] p-3 m-auto">
+    <Card className="w-[44rem] h-fit p-3">
       <CardHeader className="flex items-center justify-between gap-3">
-        <h2 className={cn("text-2xl flex items-center gap-4")}>
+        <h2 className={cn("text-xl flex items-center gap-4")}>
           <Autocomplete
             fullWidth={false}
             className="w-36"

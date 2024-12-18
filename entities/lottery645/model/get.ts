@@ -13,3 +13,10 @@ export interface Lottery645Dto {
   firstWinAmount: number; // 1등 당첨 금액
   totalSellAmount: number; // 총 판매액
 }
+
+export interface Lottery645WinnerStoreDto {
+  storeId: number;
+  storeName: string;
+  storeAddress: string;
+}
+[];

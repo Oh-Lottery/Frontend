@@ -1,5 +1,8 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { getLottery645Detail } from "entities/lottery645/api/get";
+import {
+  getLottery645Detail,
+  getLottery645WinnerStore,
+} from "entities/lottery645/api/get";
 import { LOTTERY_645_ROUNDS_DATE } from "entities/lottery645/constants/constants";
 
 export const lottery645Loader = async ({ request }: LoaderFunctionArgs) => {
@@ -12,28 +15,33 @@ export const lottery645Loader = async ({ request }: LoaderFunctionArgs) => {
     return redirect(`/lottery645?round=${lottery645RoundsDate.length}`);
   }
 
-  const result = await getLottery645Detail({
+  const lotteryDetailResult = await getLottery645Detail({
+    round: round ?? lottery645RoundsDate.length.toString(),
+  });
+
+  const lotteryWinnerStoreResult = await getLottery645WinnerStore({
     round: round ?? lottery645RoundsDate.length.toString(),
   });
 
   return {
-    round: Number(result.round),
-    drawDate: result.drawDate,
+    round: Number(lotteryDetailResult.round),
+    drawDate: lotteryDetailResult.drawDate,
     drawnNumber: [
-      result.drawNo1,
-      result.drawNo2,
-      result.drawNo3,
-      result.drawNo4,
-      result.drawNo5,
-      result.drawNo6,
+      lotteryDetailResult.drawNo1,
+      lotteryDetailResult.drawNo2,
+      lotteryDetailResult.drawNo3,
+      lotteryDetailResult.drawNo4,
+      lotteryDetailResult.drawNo5,
+      lotteryDetailResult.drawNo6,
     ],
-    bonusNumber: result.bonusNo,
+    bonusNumber: lotteryDetailResult.bonusNo,
     lotteryInfo: {
-      firstAccumulateAmount: result.firstAccumulateAmount,
-      firstPrizeWinnerCount: result.firstPrizeWinnerCount,
-      firstWinAmount: result.firstWinAmount,
-      totalSellAmount: result.totalSellAmount,
+      firstAccumulateAmount: lotteryDetailResult.firstAccumulateAmount,
+      firstPrizeWinnerCount: lotteryDetailResult.firstPrizeWinnerCount,
+      firstWinAmount: lotteryDetailResult.firstWinAmount,
+      totalSellAmount: lotteryDetailResult.totalSellAmount,
     },
     lotteryRoundDateArray: lottery645RoundsDate,
+    lotteryWinnerStore: lotteryWinnerStoreResult,
   };
 };
