@@ -5,9 +5,22 @@ import {
   NavbarBrand,
   NavbarContent,
 } from "@nextui-org/react";
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
+import { ROUTE_PATH } from "shared/routes/path";
 
-const LNB = () => {
+const GNB_NAVIGATION = [
+  {
+    title: "로또 6/45",
+    to: ROUTE_PATH.LOTTERY_645._path,
+  },
+  {
+    title: "연금복권 720+",
+    to: ROUTE_PATH.LOTTERY_720._path,
+  },
+];
+
+const GNB = () => {
+  const location = useLocation();
   return (
     <>
       <Navbar
@@ -24,17 +37,16 @@ const LNB = () => {
             </h1>
           </Link>
         </NavbarBrand>
-        <NavbarContent title="당첨 결과" className={cn(" !flex-grow-0")}>
-          <NavbarItem isActive>
-            <Link to={"/lottery645"}>로또 6/45</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to={"/lottery720"}>연금복권 720+</Link>
-          </NavbarItem>
+        <NavbarContent title="당첨 결과" className={cn("!flex-grow-0")}>
+          {GNB_NAVIGATION.map((nav) => (
+            <NavbarItem key={nav.title} isActive={location.pathname === nav.to}>
+              <Link to={nav.to}>{nav.title}</Link>
+            </NavbarItem>
+          ))}
         </NavbarContent>
       </Navbar>
     </>
   );
 };
 
-export default LNB;
+export default GNB;

@@ -4,6 +4,7 @@ import {
   getLottery720WinnerStore,
 } from "entities/lottery720/api/get";
 import generateDateArray from "shared/lib/generateDateArray";
+import { ROUTE_PATH } from "shared/routes/path";
 
 export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
@@ -15,7 +16,9 @@ export const lottery720Loader = async ({ request }: LoaderFunctionArgs) => {
   });
 
   if (!round) {
-    return redirect(`/lottery720?round=${lottery720RoundsDate.length}`);
+    return redirect(
+      `/${ROUTE_PATH.LOTTERY_720}?round=${lottery720RoundsDate.length}`
+    );
   }
 
   const result = await getLottery720Detail({

@@ -10,7 +10,7 @@ import type { LinksFunction } from "@remix-run/node";
 import "/app/styles/tailwind.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { cn } from "shared/lib/cn";
-import LNB from "shared/ui/GNB";
+import GNB from "shared/ui/GNB";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,7 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className={cn("h-full")}>
         <NextUIProvider className={cn("h-full")}>
-          <LNB />
+          <GNB />
           <main className={cn("flex-1 p-10")}>{children}</main>
         </NextUIProvider>
         <ScrollRestoration />

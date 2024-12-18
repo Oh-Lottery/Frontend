@@ -4,6 +4,7 @@ import {
   getLottery645WinnerStore,
 } from "entities/lottery645/api/get";
 import { LOTTERY_645_ROUNDS_DATE } from "entities/lottery645/constants/constants";
+import { ROUTE_PATH } from "shared/routes/path";
 
 export const lottery645Loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
@@ -12,7 +13,9 @@ export const lottery645Loader = async ({ request }: LoaderFunctionArgs) => {
   const lottery645RoundsDate = LOTTERY_645_ROUNDS_DATE;
 
   if (!round) {
-    return redirect(`/lottery645?round=${lottery645RoundsDate.length}`);
+    return redirect(
+      `${ROUTE_PATH.LOTTERY_645._path}?round=${lottery645RoundsDate.length}`
+    );
   }
 
   const lotteryDetailResult = await getLottery645Detail({
