@@ -1,7 +1,7 @@
 import { cn } from "@nextui-org/react";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import { lottery645Loader } from "./loader";
-import Lottery645ResultCard from "features/lottery654/ui/Lottery645ResultCard";
+import Lottery645ResultCard from "entities/lottery645/ui/Lottery645ResultCard";
 
 export const loader = lottery645Loader;
 
